@@ -1,1 +1,0 @@
-export { FeaturedPropertiesSection } from "./FeaturedPropertiesSection";
