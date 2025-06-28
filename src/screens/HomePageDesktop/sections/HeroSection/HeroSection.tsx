@@ -1,298 +1,109 @@
 import React from "react";
+import { ArrowRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
 
 export const HeroSection = (): JSX.Element => {
-  // Data for statistics cards
   const statsData = [
-    {
-      value: "200+",
-      label: "Happy Customers",
-    },
-    {
-      value: "10k+",
-      label: "Properties For Clients",
-    },
-    {
-      value: "16+",
-      label: "Years of Experience",
-    },
-  ];
-
-  // Data for feature cards
-  const featureCards = [
-    {
-      icon: "/icon-13.svg",
-      title: "Find Your Dream Home",
-    },
-    {
-      icon: "/icon-16.svg",
-      title: "Unlock Property Value",
-    },
-    {
-      icon: "/icon-15.svg",
-      title: "Effortless Property Management",
-    },
-    {
-      icon: "/icon-10.svg",
-      title: "Smart Investments, Informed Decisions",
-    },
+    { value: "500+", label: "Happy Customers" },
+    { value: "25k+", label: "Properties For Clients" },
+    { value: "12+", label: "Years of Experience" },
   ];
 
   return (
-    <section className="flex flex-col w-full items-start relative mt-8 lg:mt-[162px]">
-      <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-20 relative self-stretch w-full">
-        {/* Left content area */}
-        <div className="flex flex-col items-start justify-center gap-8 lg:gap-[60px] px-4 lg:pl-[162px] lg:pr-0 py-0 relative flex-1 self-stretch z-[1] order-2 lg:order-1">
-          {/* Heading and subheading */}
-          <div className="flex flex-col items-end gap-6 relative self-stretch w-full">
-            <h1 className="font-semibold text-white text-3xl lg:text-6xl leading-[1.2] lg:leading-[72.0px] relative self-stretch mt-[-1.00px] [font-family:'Urbanist',Helvetica] tracking-[0]">
-              Discover Your Dream Property with Estatein
-            </h1>
-
-            <p className="font-medium text-grey-60 tracking-[0] relative self-stretch [font-family:'Urbanist',Helvetica] text-base lg:text-lg leading-[24px] lg:leading-[27px]">
-              Your journey to finding the perfect property begins here. Explore
-              our listings to find the home that matches your dreams.
-            </p>
-
-            {/* Circular decorative element - Hidden on mobile */}
-            <div className="hidden lg:flex w-[175px] h-[175px] items-start gap-[15.91px] p-[47.73px] absolute top-0 left-[742px] bg-grey-08 rounded-[159.09px] overflow-hidden border-[1.59px] border-solid border-neutral-800">
-              <div className="relative w-[79.55px] h-[79.55px] bg-grey-10 rounded-[89.09px] border-[1.59px] border-solid border-neutral-800" />
-
-              <img
-                className="absolute w-[34px] h-[34px] top-[70px] left-[70px]"
-                alt="Icon"
-                src="/icon-7.svg"
-              />
-
-              <div className="absolute w-[204px] h-36 top-4 left-4">
-                <div className="absolute top-[126px] left-[72px] rotate-[172.02deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                  ✨
-                </div>
-
-                <div className="absolute top-[125px] left-[57px] rotate-[-171.37deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                  D
-                </div>
-
-                <div className="absolute top-[122px] left-12 rotate-[-160.43deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                  i
-                </div>
-
-                <div className="absolute w-[50px] h-[130px] top-1.5 left-0">
-                  <div className="absolute top-28 left-[38px] rotate-[-151.52deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                    s
-                  </div>
-
-                  <div className="absolute w-11 h-[119px] top-[5px] left-0">
-                    <div className="absolute top-[100px] left-7 rotate-[-140.17deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                      c
-                    </div>
-
-                    <div className="absolute w-9 h-[101px] top-2 left-0">
-                      <div className="absolute top-[83px] left-[18px] rotate-[-127.61deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        o
-                      </div>
-
-                      <div className="absolute top-[70px] left-2.5 rotate-[-115.06deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        v
-                      </div>
-
-                      <div className="absolute top-[58px] left-1.5 rotate-[-102.50deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        e
-                      </div>
-
-                      <div className="absolute top-[45px] left-1.5 rotate-[-91.15deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        r
-                      </div>
-
-                      <div className="absolute top-9 left-2 rotate-[-82.24deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        {""}
-                      </div>
-
-                      <div className="absolute top-6 left-[7px] rotate-[-71.30deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        Y
-                      </div>
-
-                      <div className="absolute top-[11px] left-3.5 rotate-[-57.93deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        o
-                      </div>
-
-                      <div className="absolute top-0 left-[23px] rotate-[-45.37deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        u
-                      </div>
-                    </div>
-
-                    <div className="absolute top-0 left-[33px] rotate-[-34.44deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                      r
-                    </div>
-                  </div>
-
-                  <div className="absolute top-0 left-[43px] rotate-[-25.52deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                    {""}
-                  </div>
-                </div>
-
-                <div className="absolute top-0.5 left-[51px] rotate-[-14.18deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                  D
-                </div>
-
-                <div className="absolute top-0 left-[67px] rotate-[-2.03deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                  r
-                </div>
-
-                <div className="absolute top-px left-[77px] rotate-[9.32deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                  e
-                </div>
-
-                <div className="absolute top-[5px] left-[91px] rotate-[22.28deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                  a
-                </div>
-
-                <div className="absolute w-[45px] h-[119px] top-[11px] left-[99px]">
-                  <div className="absolute top-0.5 left-1 rotate-[37.27deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                    m
-                  </div>
-
-                  <div className="absolute w-8 h-24 top-[13px] left-3">
-                    <div className="absolute -top-0.5 left-1.5 rotate-[49.83deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                      {""}
-                    </div>
-
-                    <div className="absolute w-[27px] h-[78px] top-2 left-[5px]">
-                      <div className="absolute -top-px left-1.5 rotate-[59.96deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        P
-                      </div>
-
-                      <div className="absolute top-2.5 left-3 rotate-[70.90deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        r
-                      </div>
-
-                      <div className="absolute top-[22px] left-[13px] rotate-[82.24deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        o
-                      </div>
-
-                      <div className="absolute top-[37px] left-[13px] rotate-[95.20deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        p
-                      </div>
-
-                      <div className="absolute top-[50px] left-[11px] rotate-[108.17deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        e
-                      </div>
-
-                      <div className="absolute top-[62px] left-[7px] rotate-[119.51deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                        r
-                      </div>
-                    </div>
-
-                    <div className="absolute top-[79px] left-1.5 rotate-[129.23deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                      t
-                    </div>
-                  </div>
-
-                  <div className="absolute top-[101px] left-2 rotate-[140.17deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                    y
-                  </div>
-                </div>
-
-                <div className="absolute top-[117px] left-[101px] rotate-[150.30deg] [font-family:'Urbanist',Helvetica] font-semibold text-white text-[15px] tracking-[0] leading-[normal] whitespace-nowrap">
-                  {""}
-                </div>
-              </div>
+    <section className="relative bg-gradient-to-br from-primary-50 to-white hero-pattern overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-8 animate-fade-in">
+            <div className="space-y-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight animate-slide-up">
+                Discover Your{" "}
+                <span className="text-primary-600 animate-pulse-slow">Dream Property</span> with
+                Rentwala
+              </h1>
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                Your journey to finding the perfect property begins here. Explore
+                our listings to find the home that matches your dreams in India's prime locations.
+              </p>
             </div>
-          </div>
 
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-5 relative self-stretch w-full">
-            <Button
-              variant="outline"
-              className="w-full sm:w-auto h-auto px-6 py-[18px] rounded-[10px] border border-solid border-neutral-800 [font-family:'Urbanist',Helvetica] font-medium text-white text-lg"
-            >
-              Learn More
-            </Button>
-
-            <Link to="/properties" className="w-full sm:w-auto">
-              <Button className="w-full h-auto px-6 py-[18px] rounded-[10px] bg-purple-60 [font-family:'Urbanist',Helvetica] font-medium text-white text-lg">
-                Browse Properties
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 animate-bounce-in" style={{ animationDelay: '0.4s' }}>
+              <Link to="/properties">
+                <Button size="lg" className="bg-primary-600 hover:bg-primary-700 group transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
+                  Browse Properties
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-2 transition-transform duration-300" />
+                </Button>
+              </Link>
+              <Button variant="outline" size="lg" className="group transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+                <Play className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform duration-300" />
+                Watch Demo
               </Button>
-            </Link>
-          </div>
+            </div>
 
-          {/* Statistics cards */}
-          <div className="flex flex-col sm:flex-row items-start gap-5 relative self-stretch w-full">
-            {statsData.map((stat, index) => (
-              <Card
-                key={`stat-${index}`}
-                className="w-full sm:flex-1 bg-grey-10 rounded-xl border border-solid border-neutral-800"
-              >
-                <CardContent className="flex flex-col items-start gap-0.5 px-6 py-4">
-                  <h3 className="font-bold text-white text-2xl lg:text-[40px] leading-[1.5] lg:leading-[60px] relative self-stretch mt-[-1.00px] [font-family:'Urbanist',Helvetica] tracking-[0]">
-                    {stat.value}
-                  </h3>
-                  <p className="font-medium text-grey-60 tracking-[0] relative self-stretch [font-family:'Urbanist',Helvetica] text-base lg:text-lg leading-[24px] lg:leading-[27px]">
-                    {stat.label}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Right image area */}
-        <div className="flex h-[300px] lg:h-[814px] items-start gap-2.5 relative flex-1 z-0 bg-grey-10 overflow-hidden order-1 lg:order-2">
-          <div className="absolute w-[1924px] h-[1286px] top-[-237px] left-[-502px]">
-            <div className="relative w-[1922px] h-[1283px] top-px left-px">
-              <div className="h-[1283px]">
-                <div className="relative w-[1922px] h-[1283px]">
-                  <img
-                    className="absolute w-[920px] h-[814px] top-[236px] left-[501px]"
-                    alt="Group"
-                    src="/group-10.png"
-                  />
-                </div>
-              </div>
+            {/* Statistics */}
+            <div className="grid grid-cols-3 gap-6 pt-8">
+              {statsData.map((stat, index) => (
+                <Card key={index} className="text-center border-0 shadow-none bg-white/50 hover:bg-white/80 transition-all duration-300 transform hover:scale-105 animate-scale-in" style={{ animationDelay: `${0.6 + index * 0.1}s` }}>
+                  <CardContent className="p-4">
+                    <div className="text-2xl md:text-3xl font-bold text-primary-600 animate-pulse-slow">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
 
-          <img
-            className="relative flex-1 self-stretch object-cover"
-            alt="Property image"
-            src="/image-3.png"
-          />
+          {/* Right Content - Hero Image */}
+          <div className="relative animate-slide-in">
+            <div className="relative">
+              <img
+                src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Modern luxury home"
+                className="w-full h-[500px] lg:h-[600px] object-cover rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+            </div>
+            
+            {/* Floating Cards */}
+            <Card className="absolute -bottom-6 -left-6 bg-white shadow-xl border-0 animate-float">
+              <CardContent className="p-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center animate-pulse-slow">
+                    <span className="text-primary-600 font-bold">🏠</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-900">Premium Location</div>
+                    <div className="text-sm text-gray-600">Best neighborhoods</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="absolute -top-6 -right-6 bg-white shadow-xl border-0 animate-float" style={{ animationDelay: '1s' }}>
+              <CardContent className="p-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center animate-wiggle">
+                    <span className="text-primary-600 font-bold">⭐</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-900">5.0 Rating</div>
+                    <div className="text-sm text-gray-600">Trusted by clients</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
 
-      {/* Feature cards section */}
-      <div className="flex flex-col lg:flex-row items-center gap-5 p-5 relative self-stretch w-full mb-[-1.00px] ml-[-1.00px] mr-[-1.00px] bg-grey-08 border border-solid border-neutral-800 shadow-[0px_0px_0px_10px_#191919]">
-        {featureCards.map((feature, index) => (
-          <Card
-            key={`feature-${index}`}
-            className="w-full lg:flex-1 bg-grey-10 rounded-xl border border-solid border-neutral-800"
-          >
-            <CardContent className="flex flex-col items-center gap-5 px-5 py-10 relative">
-              <div className="inline-flex items-center gap-2.5 p-2.5 relative rounded-[100px]">
-                <div className="inline-flex items-center gap-2.5 p-3.5 relative rounded-[100px]">
-                  <img
-                    className="relative w-[34px] h-[34px]"
-                    alt="Icon"
-                    src={feature.icon}
-                  />
-                </div>
-              </div>
-
-              <h3 className="relative self-stretch [font-family:'Urbanist',Helvetica] font-semibold text-white text-lg lg:text-xl text-center tracking-[0] leading-[27px] lg:leading-[30px]">
-                {feature.title}
-              </h3>
-
-              <img
-                className="absolute w-[34px] h-[34px] top-5 right-5 lg:left-[401px]"
-                alt="Icon"
-                src="/icon-7.svg"
-              />
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      {/* Background Decorations */}
+      <div className="absolute top-20 right-20 w-32 h-32 bg-primary-200 rounded-full opacity-20 blur-3xl animate-pulse-slow"></div>
+      <div className="absolute bottom-20 left-20 w-40 h-40 bg-primary-300 rounded-full opacity-20 blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
     </section>
   );
 };

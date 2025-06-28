@@ -8,17 +8,13 @@ import { RealEstateJourneySection } from "./sections/RealEstateJourneySection";
 
 export const HomePageDesktop = (): JSX.Element => {
   return (
-    <div className="bg-grey-08 flex flex-col items-center w-full">
-      <div className="w-full max-w-[1920px]">
-        <HeaderSection />
-        <HeroSection />
-        <div className="px-4 lg:px-[8%]">
-          <FeaturedPropertiesSection />
-          <ClientTestimonialsSection />
-          <RealEstateJourneySection />
-        </div>
-        <FAQSection />
-      </div>
+    <div className="min-h-screen bg-white">
+      <HeaderSection />
+      <HeroSection />
+      <FeaturedPropertiesSection />
+      <ClientTestimonialsSection />
+      <RealEstateJourneySection />
+      <FAQSection />
     </div>
   );
 };

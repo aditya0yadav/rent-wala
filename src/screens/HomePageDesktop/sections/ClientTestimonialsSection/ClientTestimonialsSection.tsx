@@ -1,150 +1,90 @@
 import React from "react";
-import { Badge } from "../../../../components/ui/badge";
+import { Star, Quote } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
 
 export const ClientTestimonialsSection = (): JSX.Element => {
-  // Testimonial data for mapping
   const testimonials = [
     {
       title: "Exceptional Service!",
-      content:
-        "Our experience with Estatein was outstanding. Their team's dedication and professionalism made finding our dream home a breeze. Highly recommended!",
-      author: "Wade Warren",
-      location: "USA, California",
-      profileImage: "/profile.png",
+      content: "Our experience with Rentwala was outstanding. Their team's dedication and professionalism made finding our dream home a breeze. Highly recommended!",
+      author: "Priya Sharma",
+      location: "Gurgaon, Haryana",
+      profileImage: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200",
+      rating: 5,
     },
     {
       title: "Efficient and Reliable",
-      content:
-        "Estatein provided us with top-notch service. They helped us sell our property quickly and at a great price. We couldn't be happier with the results.",
-      author: "Emelie Thomson",
-      location: "USA, Florida",
-      profileImage: "/profile-1.png",
+      content: "Rentwala provided us with top-notch service. They helped us sell our property quickly and at a great price. We couldn't be happier with the results.",
+      author: "Rajesh Kumar",
+      location: "Delhi, NCR",
+      profileImage: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=200",
+      rating: 5,
     },
     {
       title: "Trusted Advisors",
-      content:
-        "The Estatein team guided us through the entire buying process. Their knowledge and commitment to our needs were impressive. Thank you for your support!",
-      author: "John Mans",
-      location: "USA, Nevada",
-      profileImage: "/profile-2.png",
+      content: "The Rentwala team guided us through the entire buying process. Their knowledge and commitment to our needs were impressive. Thank you for your support!",
+      author: "Amit Singh",
+      location: "Noida, UP",
+      profileImage: "https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=200",
+      rating: 5,
     },
   ];
 
   return (
-    <section className="flex flex-col w-full max-w-[1596px] items-start gap-12 lg:gap-20 mx-auto">
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 lg:gap-8 w-full">
-        <div className="flex flex-col items-start gap-3.5 relative flex-1">
-          <h2 className="relative self-stretch mt-[-1.00px] font-['Urbanist',Helvetica] font-semibold text-white text-3xl lg:text-5xl tracking-[0] leading-[1.2] lg:leading-[72px]">
-            What Our Clients Say
-          </h2>
-
-          <p className="font-medium text-grey-60 tracking-[0] relative self-stretch font-['Urbanist',Helvetica] text-base lg:text-lg leading-[24px] lg:leading-[27px]">
-            Read the success stories and heartfelt testimonials from our valued
-            clients. Discover why they chose Estatein for their real estate
-            needs.
-          </p>
-
-          <div className="hidden lg:block absolute w-[68px] h-[30px] -top-10 -left-5">
-            <div className="bg-[url(/group-4.png)] absolute w-[30px] h-[30px] top-0 left-0 bg-[100%_100%]" />
-            <div className="bg-[url(/group-5.png)] absolute w-[18px] h-[18px] top-1.5 left-9 bg-[100%_100%]" />
-            <div className="bg-[url(/group-6.png)] absolute w-2 h-2 top-[11px] left-[60px] bg-[100%_100%]" />
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 space-y-4 lg:space-y-0">
+          <div className="space-y-4 animate-fade-in">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              What Our Clients Say
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl">
+              Read the success stories and heartfelt testimonials from our valued clients. 
+              Discover why they chose Rentwala for their real estate needs.
+            </p>
           </div>
+          <Button variant="outline" className="transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+            View All Testimonials
+          </Button>
         </div>
 
-        <Button
-          variant="outline"
-          className="w-full lg:w-auto px-6 py-[18px] h-auto bg-grey-10 rounded-[10px] border border-solid border-neutral-800"
-        >
-          <span className="font-['Urbanist',Helvetica] font-medium text-white text-lg tracking-[0] leading-[27px]">
-            View All Testimonials
-          </span>
-        </Button>
-      </div>
-
-      <div className="flex flex-col items-start gap-8 lg:gap-[50px] w-full">
-        <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-[30px] w-full">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <Card
-              key={index}
-              className="w-full lg:flex-1 bg-grey-08 rounded-xl border border-solid border-neutral-800"
-            >
-              <CardContent className="flex flex-col items-start gap-6 lg:gap-10 p-6 lg:p-[50px]">
-                <div className="inline-flex items-start gap-2.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Badge
-                      key={i}
-                      className="inline-flex items-start gap-2.5 p-2 lg:p-2.5 bg-grey-10 rounded-[100px] border border-solid border-neutral-800"
-                    >
-                      <img
-                        className="w-[18px] lg:w-[21.31px] h-[17px] lg:h-[20.36px]"
-                        alt="Star rating"
-                        src="/shape.svg"
-                      />
-                    </Badge>
-                  ))}
+            <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
+              <CardContent className="p-6 space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-1">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400 animate-pulse-slow" style={{ animationDelay: `${i * 0.1}s` }} />
+                    ))}
+                  </div>
+                  <Quote className="h-6 w-6 text-primary-200 group-hover:text-primary-400 transition-colors duration-300" />
                 </div>
 
-                <div className="flex flex-col items-start gap-3.5 w-full">
-                  <h3 className="font-semibold text-white text-xl lg:text-2xl leading-[1.2] lg:leading-9 self-stretch mt-[-1.00px] font-['Urbanist',Helvetica] tracking-[0]">
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
                     {testimonial.title}
                   </h3>
-
-                  <p className="font-medium text-white tracking-[0] self-stretch font-['Urbanist',Helvetica] text-base lg:text-lg leading-[24px] lg:leading-[27px]">
+                  <p className="text-gray-600 leading-relaxed">
                     {testimonial.content}
                   </p>
                 </div>
 
-                <div className="flex items-center gap-3 w-full">
+                <div className="flex items-center space-x-3 pt-4 border-t border-gray-100">
                   <img
-                    className="w-[50px] lg:w-[60px] h-[50px] lg:h-[60px] object-cover rounded-full"
-                    alt="Profile"
                     src={testimonial.profileImage}
+                    alt={testimonial.author}
+                    className="w-12 h-12 rounded-full object-cover transform group-hover:scale-110 transition-transform duration-300"
                   />
-
-                  <div className="flex flex-col items-start gap-0.5 flex-1">
-                    <h4 className="self-stretch mt-[-1.00px] font-['Urbanist',Helvetica] font-medium text-white text-lg lg:text-xl tracking-[0] leading-[27px] lg:leading-[30px]">
-                      {testimonial.author}
-                    </h4>
-
-                    <p className="self-stretch font-['Urbanist',Helvetica] font-medium text-grey-60 text-base lg:text-lg tracking-[0] leading-[24px] lg:leading-[27px]">
-                      {testimonial.location}
-                    </p>
+                  <div>
+                    <p className="font-semibold text-gray-900">{testimonial.author}</p>
+                    <p className="text-sm text-gray-600">{testimonial.location}</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 pt-5 pb-0 px-0 w-full border-t border-neutral-800">
-          <div className="mt-[-1.00px] font-['Urbanist',Helvetica] font-medium text-lg lg:text-xl tracking-[0] leading-[27px] lg:leading-[30px]">
-            <span className="text-white">01</span>
-            <span className="text-[#999999]"> of 10</span>
-          </div>
-
-          <div className="flex items-center gap-2.5">
-            <Button
-              variant="outline"
-              size="icon"
-              className="p-3 lg:p-3.5 rounded-[69px] border border-solid border-neutral-800"
-            >
-              <img
-                className="w-6 lg:w-[30px] h-6 lg:h-[30px]"
-                alt="Previous"
-                src="/icon-2.svg"
-              />
-            </Button>
-
-            <Button
-              variant="outline"
-              size="icon"
-              className="p-3 lg:p-3.5 bg-grey-10 rounded-[69px] border border-solid border-neutral-800"
-            >
-              <img className="w-6 lg:w-[30px] h-6 lg:h-[30px]" alt="Next" src="/icon.svg" />
-            </Button>
-          </div>
         </div>
       </div>
     </section>
