@@ -1,15 +1,66 @@
-import React from "react";
-import { ArrowRight, Play } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { ArrowRight, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
 
 export const HeroSection = (): JSX.Element => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const heroImages = [
+    {
+      url: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      title: "Luxury Villa in DLF Phase 4",
+      location: "Gurgaon, Haryana"
+    },
+    {
+      url: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      title: "Modern Apartment in Connaught Place",
+      location: "Delhi, NCR"
+    },
+    {
+      url: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      title: "Premium Townhouse in Sector 62",
+      location: "Noida, UP"
+    },
+    {
+      url: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      title: "Contemporary Loft in Cyber City",
+      location: "Gurgaon, Haryana"
+    },
+    {
+      url: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      title: "Spacious Family Home in Greater Kailash",
+      location: "Delhi, NCR"
+    }
+  ];
+
   const statsData = [
     { value: "500+", label: "Happy Customers" },
     { value: "25k+", label: "Properties For Clients" },
     { value: "12+", label: "Years of Experience" },
   ];
+
+  // Auto-slide functionality
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
 
   return (
     <section className="relative bg-gradient-to-br from-primary-50 to-white hero-pattern overflow-hidden">
@@ -58,15 +109,75 @@ export const HeroSection = (): JSX.Element => {
             </div>
           </div>
 
-          {/* Right Content - Hero Image */}
+          {/* Right Content - Image Slider */}
           <div className="relative animate-slide-in">
-            <div className="relative">
-              <img
-                src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Modern luxury home"
-                className="w-full h-[500px] lg:h-[600px] object-cover rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+              {/* Image Container */}
+              <div className="relative h-[500px] lg:h-[600px]">
+                {heroImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                      index === currentSlide 
+                        ? 'opacity-100 scale-100' 
+                        : 'opacity-0 scale-105'
+                    }`}
+                  >
+                    <img
+                      src={image.url}
+                      alt={image.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                    
+                    {/* Image Info Overlay */}
+                    <div className="absolute bottom-6 left-6 text-white animate-fade-in">
+                      <h3 className="text-xl font-semibold mb-1">{image.title}</h3>
+                      <p className="text-sm opacity-90">{image.location}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 transform hover:scale-110 group"
+              >
+                <ChevronLeft className="h-6 w-6 group-hover:-translate-x-1 transition-transform duration-300" />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 transform hover:scale-110 group"
+              >
+                <ChevronRight className="h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+
+              {/* Slide Indicators */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                {heroImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 transform hover:scale-125 ${
+                      index === currentSlide 
+                        ? 'bg-white shadow-lg' 
+                        : 'bg-white/50 hover:bg-white/70'
+                    }`}
+                  />
+                ))}
+              </div>
+
+              {/* Progress Bar */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-white/20">
+                <div 
+                  className="h-full bg-primary-600 transition-all duration-4000 ease-linear"
+                  style={{ 
+                    width: `${((currentSlide + 1) / heroImages.length) * 100}%`,
+                    animation: 'none'
+                  }}
+                />
+              </div>
             </div>
             
             {/* Floating Cards */}

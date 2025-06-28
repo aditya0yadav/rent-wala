@@ -68,9 +68,11 @@ export const HeaderSection = (): JSX.Element => {
 
           {/* Contact Button & Mobile Menu */}
           <div className="flex items-center space-x-4">
-            <Button className="hidden md:inline-flex bg-primary-600 hover:bg-primary-700 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
-              Contact Us
-            </Button>
+            <Link to="/contact">
+              <Button className="hidden md:inline-flex bg-primary-600 hover:bg-primary-700 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+                Contact Us
+              </Button>
+            </Link>
             
             {/* Mobile menu button */}
             <Button
@@ -103,9 +105,11 @@ export const HeaderSection = (): JSX.Element => {
                   {item.name}
                 </Link>
               ))}
-              <Button className="mt-4 bg-primary-600 hover:bg-primary-700 transform hover:scale-105 transition-all duration-300">
-                Contact Us
-              </Button>
+              <Link to="/contact">
+                <Button className="mt-4 bg-primary-600 hover:bg-primary-700 transform hover:scale-105 transition-all duration-300">
+                  Contact Us
+                </Button>
+              </Link>
             </nav>
           </div>
         )}

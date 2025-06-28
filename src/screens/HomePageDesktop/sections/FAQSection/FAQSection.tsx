@@ -1,5 +1,6 @@
 import React from "react";
 import { Mail, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { Input } from "../../../../components/ui/input";
@@ -53,9 +54,11 @@ export const FAQSection = (): JSX.Element => {
               </p>
             </div>
             <div className="flex justify-center lg:justify-end animate-bounce-in" style={{ animationDelay: '0.3s' }}>
-              <Button size="lg" variant="secondary" className="bg-white text-primary-600 hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
-                Explore Properties
-              </Button>
+              <Link to="/properties">
+                <Button size="lg" variant="secondary" className="bg-white text-primary-600 hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+                  Explore Properties
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -122,9 +125,9 @@ export const FAQSection = (): JSX.Element => {
                 <p className="text-gray-400 text-sm">
                   © 2024 Rentwala. All Rights Reserved.
                 </p>
-                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
+                <Link to="/terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
                   Terms & Conditions
-                </a>
+                </Link>
               </div>
               
               <div className="flex items-center space-x-4 animate-bounce-in" style={{ animationDelay: '0.5s' }}>

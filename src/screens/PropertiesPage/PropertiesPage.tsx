@@ -1,9 +1,26 @@
 import React, { useState } from "react";
 import { Search, MapPin, Bed, Bath, Square, Filter, SlidersHorizontal } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
+
+interface Property {
+  id: number;
+  title: string;
+  description: string;
+  bedrooms: number;
+  bathrooms: number;
+  area: string;
+  location: string;
+  price: number;
+  priceFormatted: string;
+  type: string;
+  status: string;
+  featured: boolean;
+  images: string[];
+}
 
 export const PropertiesPage = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -11,78 +28,96 @@ export const PropertiesPage = (): JSX.Element => {
   const [location, setLocation] = useState("");
   const [propertyType, setPropertyType] = useState("");
 
-  const properties = [
+  const properties: Property[] = [
     {
       id: 1,
-      image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800",
       title: "Luxury Villa in DLF Phase 4",
       description: "A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood with modern amenities and premium finishes...",
       bedrooms: 4,
       bathrooms: 3,
       area: "2,500 sq ft",
       location: "Gurgaon, Haryana",
-      price: "₹2,50,00,000",
+      price: 25000000,
+      priceFormatted: "₹2,50,00,000",
       type: "Villa",
+      status: "For Sale",
+      featured: true,
+      images: ["https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800"]
     },
     {
       id: 2,
-      image: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800",
       title: "Modern Apartment in Connaught Place",
       description: "A chic and fully-furnished 2-bedroom apartment with panoramic city views in the heart of Delhi...",
       bedrooms: 2,
       bathrooms: 2,
       area: "1,200 sq ft",
       location: "Delhi, NCR",
-      price: "₹1,75,00,000",
+      price: 17500000,
+      priceFormatted: "₹1,75,00,000",
       type: "Apartment",
+      status: "For Sale",
+      featured: true,
+      images: ["https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800"]
     },
     {
       id: 3,
-      image: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800",
       title: "Premium Townhouse in Sector 62",
       description: "An elegant 3-bedroom, 2.5-bathroom townhouse in a gated community with world-class amenities...",
       bedrooms: 3,
       bathrooms: 3,
       area: "1,800 sq ft",
       location: "Noida, UP",
-      price: "₹1,25,00,000",
+      price: 12500000,
+      priceFormatted: "₹1,25,00,000",
       type: "Townhouse",
+      status: "For Sale",
+      featured: true,
+      images: ["https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800"]
     },
     {
       id: 4,
-      image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800",
       title: "Contemporary Loft in Cyber City",
       description: "Modern loft with industrial design elements and premium finishes in the business district of Gurgaon...",
       bedrooms: 1,
       bathrooms: 1,
       area: "900 sq ft",
       location: "Gurgaon, Haryana",
-      price: "₹85,00,000",
+      price: 8500000,
+      priceFormatted: "₹85,00,000",
       type: "Loft",
+      status: "For Sale",
+      featured: false,
+      images: ["https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800"]
     },
     {
       id: 5,
-      image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
       title: "Spacious Family Home in Greater Kailash",
       description: "Spacious family home with large garden, perfect for growing families in one of Delhi's premium localities...",
       bedrooms: 5,
       bathrooms: 4,
       area: "3,200 sq ft",
       location: "Delhi, NCR",
-      price: "₹4,50,00,000",
+      price: 45000000,
+      priceFormatted: "₹4,50,00,000",
       type: "House",
+      status: "For Sale",
+      featured: true,
+      images: ["https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"]
     },
     {
       id: 6,
-      image: "https://images.pexels.com/photos/1438832/pexels-photo-1438832.jpeg?auto=compress&cs=tinysrgb&w=800",
       title: "Luxury Penthouse in Sector 50",
       description: "Exclusive penthouse with panoramic city views, premium amenities, and private terrace in Noida...",
       bedrooms: 3,
       bathrooms: 3,
       area: "2,100 sq ft",
       location: "Noida, UP",
-      price: "₹3,25,00,000",
+      price: 32500000,
+      priceFormatted: "₹3,25,00,000",
       type: "Penthouse",
+      status: "For Sale",
+      featured: true,
+      images: ["https://images.pexels.com/photos/1438832/pexels-photo-1438832.jpeg?auto=compress&cs=tinysrgb&w=800"]
     },
   ];
 
@@ -238,7 +273,7 @@ export const PropertiesPage = (): JSX.Element => {
               <Card key={property.id} className="group hover:shadow-xl transition-all duration-500 border-0 shadow-lg overflow-hidden hover:-translate-y-2 animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="relative overflow-hidden">
                   <img
-                    src={property.image}
+                    src={property.images[0]}
                     alt={property.title}
                     className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
@@ -287,11 +322,13 @@ export const PropertiesPage = (): JSX.Element => {
                   <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                     <div className="space-y-1">
                       <p className="text-sm text-gray-600">Price</p>
-                      <p className="text-2xl font-bold text-primary-600 animate-pulse-slow">{property.price}</p>
+                      <p className="text-2xl font-bold text-primary-600 animate-pulse-slow">{property.priceFormatted}</p>
                     </div>
-                    <Button className="bg-primary-600 hover:bg-primary-700 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
-                      View Details
-                    </Button>
+                    <Link to={`/properties/${property.id}`}>
+                      <Button className="bg-primary-600 hover:bg-primary-700 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+                        View Details
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
@@ -318,9 +355,11 @@ export const PropertiesPage = (): JSX.Element => {
             Our expert agents are here to help you find the perfect property that meets all your requirements in India's prime locations.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-bounce-in" style={{ animationDelay: '0.4s' }}>
-            <Button size="lg" variant="secondary" className="bg-white text-primary-600 hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
-              Contact an Agent
-            </Button>
+            <Link to="/contact">
+              <Button size="lg" variant="secondary" className="bg-white text-primary-600 hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+                Contact an Agent
+              </Button>
+            </Link>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-600 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
               Schedule a Viewing
             </Button>
